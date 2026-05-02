@@ -1,6 +1,13 @@
 #!/usr/bin/env Rscript
 
-library(argparse)
+
+suppressPackageStartupMessages({
+  library(argparse)
+  library(SingleCellExperiment)
+  library(anndataR)
+  library(scrapper)
+})
+
 
 # Parse command line arguments
 parser <- ArgumentParser(description="OmniBenchmark module")
@@ -27,10 +34,6 @@ cat("Module name:", args$name, "\n")
 
 cat("Input file:", args$input_h5, "\n")
 cat("Filtering type:", args$filter_type, "\n")
-
-library(SingleCellExperiment)
-library(anndataR)
-library(scrapper)
 
 sce <- read_h5ad(args$input_h5, as = "SingleCellExperiment")
 
